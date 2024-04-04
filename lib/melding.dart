@@ -5,7 +5,7 @@ class MeldingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Melding Page',
+        'Melding Page Brent test',
         style: TextStyle(fontSize: 30),
       ),
     );
