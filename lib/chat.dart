@@ -5,7 +5,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Chat Pagezfdbdfsg',
+        'Chat Pagezfdbdfsgsadfasdfasdfsd',
         style: TextStyle(fontSize: 30),
       ),
     );
