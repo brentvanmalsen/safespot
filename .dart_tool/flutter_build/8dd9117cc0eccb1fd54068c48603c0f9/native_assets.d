@@ -1,0 +1,1 @@
+ D:\\A\ Semester\ 4\ SM\\Community\ safety\\duo-case-27-community-safety\\.dart_tool\\flutter_build\\8dd9117cc0eccb1fd54068c48603c0f9\\native_assets.yaml: 
