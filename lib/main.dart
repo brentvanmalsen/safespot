@@ -1,100 +1,76 @@
 import 'package:flutter/material.dart';
+import 'chat.dart';
+import 'melding.dart';
+import 'overzicht.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigatie Menu',
+      title: 'Flutter Bottom Navigation Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NavigationPage(),
+      home: const MainPage(), // Toon de MainPage
     );
   }
 }
 
-class NavigationPage extends StatefulWidget {
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
   @override
-  _NavigationPageState createState() => _NavigationPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _NavigationPageState extends State<NavigationPage> {
-  int _currentIndex = 0;
+class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    ChatsPage(),
-    MeldingPage(),
-    OverzichtPage(),
+  static List<Widget> _widgetOptions = <Widget>[
+    ChatPage(), // Chatpagina
+    MeldingPage(), // Meldingpagina
+    OverzichtPage(), // Overzichtpagina
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Navigatie Menu'),
+        title: const Text('Navigatiebalk met 3 items'),
       ),
-      body: _pages[_currentIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            label: 'Chats',
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
             label: 'Melding',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.view_list),
+            icon: Icon(Icons.home),
             label: 'Overzicht',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ChatsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Chats Pagina',
-        style: TextStyle(fontSize: 24.0),
-      ),
-    );
-  }
-}
-
-class MeldingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Melding Pagina',
-        style: TextStyle(fontSize: 24.0),
-      ),
-    );
-  }
-}
-
-class OverzichtPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Overzicht Pagina',
-        style: TextStyle(fontSize: 24.0),
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
