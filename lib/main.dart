@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Bottom Navigation Demo',
+      title: 'Flutter Navigatiemenu',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -47,9 +47,6 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Navigatiebalk met 3 items'),
-      ),
       body: IndexedStack(
         index: _selectedIndex,
         children: _widgetOptions,
