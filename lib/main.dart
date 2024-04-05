@@ -27,8 +27,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
-
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -45,34 +43,42 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Melding',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Overzicht',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-            if (index == 1) {
-              // Als de "Melding" knop is ingedrukt
-              Navigator.pushNamed(context, '/melding');
-            }
-          });
+      body: _widgetOptions.elementAt(_selectedIndex),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context,
+              '/melding'); // Navigeer naar de MeldingPage wanneer op de knop wordt geklikt
         },
+        child: Icon(Icons.notifications),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () {
+                // Controleer of de huidige pagina niet de ChatPage is voordat u navigeert
+                if (_selectedIndex != 0) {
+                  setState(() {
+                    _selectedIndex =
+                        0; // Stel de geselecteerde index in op de ChatPage
+                  });
+                }
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                setState(() {
+                  _selectedIndex =
+                      2; // Stel de geselecteerde index in op de OverzichtPage
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
