@@ -39,9 +39,14 @@ class _MainPageState extends State<MainPage> {
     OverzichtPage(), // Overzichtpagina
   ];
 
+  // Vlag om te bepalen of de bottom navigation bar moet worden getoond
+  bool _showBottomNavBar = true;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      // Controleer of de bottom navigation bar moet worden getoond op basis van de geselecteerde pagina
+      _showBottomNavBar = index != 1; // Toon niet op de MeldingPage (index 1)
     });
   }
 
@@ -52,7 +57,7 @@ class _MainPageState extends State<MainPage> {
         index: _selectedIndex,
         children: _widgetOptions,
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: _showBottomNavBar ? BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
@@ -69,7 +74,7 @@ class _MainPageState extends State<MainPage> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-      ),
+      ) : null,
     );
   }
 }
