@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'chat.dart';
-import 'melding.dart';
-import 'overzicht.dart';
+import 'chat.dart'; // Importeer de ChatPage widget
+import 'melding.dart'; // Importeer de MeldingPage widget
+import 'overzicht.dart'; // Importeer de OverzichtPage widget
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Navigatiemenu',
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/chat': (context) => ChatPage(),
+        '/melding': (context) => MeldingPage(),
+        '/overzicht': (context) => OverzichtPage(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(), // Toon de MainPage
+      home: MainPage(),
     );
   }
 }
@@ -35,29 +38,17 @@ class _MainPageState extends State<MainPage> {
 
   static List<Widget> _widgetOptions = <Widget>[
     ChatPage(), // Chatpagina
-    MeldingPage(), // Meldingpagina
+    Container(), // Lege container voor Meldingpagina
     OverzichtPage(), // Overzichtpagina
   ];
-
-  // Vlag om te bepalen of de bottom navigation bar moet worden getoond
-  bool _showBottomNavBar = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      // Controleer of de bottom navigation bar moet worden getoond op basis van de geselecteerde pagina
-      _showBottomNavBar = index != 1; // Toon niet op de MeldingPage (index 1)
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _widgetOptions,
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: _showBottomNavBar ? BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
@@ -73,8 +64,16 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ) : null,
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+            if (index == 1) {
+              // Als de "Melding" knop is ingedrukt
+              Navigator.pushNamed(context, '/melding');
+            }
+          });
+        },
+      ),
     );
   }
 }
