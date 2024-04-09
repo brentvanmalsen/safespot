@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
-import 'chat.dart';
-import 'melding.dart';
-import 'overzicht.dart';
+import 'chat.dart'; // Importeer de ChatPage widget
+import 'melding.dart'; // Importeer de MeldingPage widget
+import 'overzicht.dart'; // Importeer de OverzichtPage widget
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Navigatiemenu',
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/chat': (context) => ChatPage(),
+        '/melding': (context) => MeldingPage(),
+        '/overzicht': (context) => OverzichtPage(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(), // Toon de MainPage
+      home: MainPage(),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
-
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -35,40 +36,49 @@ class _MainPageState extends State<MainPage> {
 
   static List<Widget> _widgetOptions = <Widget>[
     ChatPage(), // Chatpagina
-    MeldingPage(), // Meldingpagina
+    Container(), // Lege container voor Meldingpagina
     OverzichtPage(), // Overzichtpagina
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _widgetOptions,
+      body: _widgetOptions.elementAt(_selectedIndex),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context,
+              '/melding'); // Navigeer naar de MeldingPage wanneer op de knop wordt geklikt
+        },
+        child: Icon(Icons.notifications),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Melding',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Overzicht',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () {
+                // Controleer of de huidige pagina niet de ChatPage is voordat u navigeert
+                if (_selectedIndex != 0) {
+                  setState(() {
+                    _selectedIndex =
+                        0; // Stel de geselecteerde index in op de ChatPage
+                  });
+                }
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                setState(() {
+                  _selectedIndex =
+                      2; // Stel de geselecteerde index in op de OverzichtPage
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
