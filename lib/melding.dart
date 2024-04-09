@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'beschrijving.dart'; // Importeer de BeschrijvingPage widget
 
 class MeldingPage extends StatelessWidget {
   @override
@@ -167,6 +168,36 @@ class MeldingPage extends StatelessWidget {
                       ],
                     ),
                   ],
+                ),
+                SizedBox(height: 30), // Ruimte onderaan de pagina
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 48.5), // Voeg hier de gewenste marge toe
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BeschrijvingPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 60), // Aanpassen van de padding
+                      backgroundColor:
+                          Color(0xFFF68B1E), // Achtergrondkleur van de knop
+                    ),
+                    child: const Text(
+                      'Verdergaan',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, // Tekstkleur van de knop
+                        fontFamily: 'Roboto',
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
