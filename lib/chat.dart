@@ -9,7 +9,13 @@ class ChatPage extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: () {},
+              onPressed: () {
+                // Navigeer naar de profielpagina wanneer op het profielicoontje wordt gedrukt
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
+              },
               iconSize: 45,
               color: Colors.orange,
             ),
@@ -49,9 +55,7 @@ class ChatPage extends StatelessWidget {
               Container(
                 height: 50,
                 width: 115,
-                margin: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 5), // Toegevoegd horizontale marge
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 decoration: BoxDecoration(
                   color: Color(0xFFF5F5F6),
                   borderRadius: BorderRadius.circular(10),
@@ -60,8 +64,7 @@ class ChatPage extends StatelessWidget {
                   child: Text(
                     'Veiligheid',
                     style: TextStyle(
-                      fontWeight:
-                          FontWeight.w500, // Gewijzigd naar FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -69,9 +72,7 @@ class ChatPage extends StatelessWidget {
               Container(
                 height: 50,
                 width: 115,
-                margin: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 5), // Toegevoegd horizontale marge
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 decoration: BoxDecoration(
                   color: Color(0xFFF5F5F6),
                   borderRadius: BorderRadius.circular(10),
@@ -80,8 +81,7 @@ class ChatPage extends StatelessWidget {
                   child: Text(
                     'Sociaal',
                     style: TextStyle(
-                      fontWeight:
-                          FontWeight.w500, // Gewijzigd naar FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -89,9 +89,7 @@ class ChatPage extends StatelessWidget {
               Container(
                 height: 50,
                 width: 115,
-                margin: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 5), // Toegevoegd horizontale marge
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 decoration: BoxDecoration(
                   color: Color(0xFFF5F5F6),
                   borderRadius: BorderRadius.circular(10),
@@ -100,17 +98,14 @@ class ChatPage extends StatelessWidget {
                   child: Text(
                     'Evenementen',
                     style: TextStyle(
-                      fontWeight:
-                          FontWeight.w500, // Gewijzigd naar FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(
-              height:
-                  2), // Extra ruimte toegevoegd tussen de rij en de rest van de content
+          SizedBox(height: 2),
           Expanded(
             child: ListView(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -133,9 +128,8 @@ class ChatPage extends StatelessWidget {
                             bottomLeft: Radius.circular(15),
                           ),
                           image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/inbraak.png'), // Gebruik AssetImage voor afbeeldingen uit de assets
-                            fit: BoxFit.cover, // Behoud hetzelfde fit-type
+                            image: AssetImage('assets/images/inbraak.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -213,6 +207,105 @@ class ChatPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profiel'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Bovenin de afbeelding met aanpassen icoon
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.orange,
+                  // Hier kun je de gebruikersfoto toevoegen
+                  // backgroundImage: AssetImage('assets/images/user_image.png'),
+                ),
+                SizedBox(width: 20),
+                Icon(Icons.edit),
+              ],
+            ),
+            SizedBox(height: 15),
+            // Naam van de gebruiker
+            Text(
+              'Jorg van de Rijdt',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            // Overzicht van gemaakte meldingen
+            Text(
+              'Mijn gemaakte meldingen:',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 2, // Aantal meldingen, voorbeeld: 5
+                itemBuilder: (context, index) {
+                  // Hier kun je de gegevens van de meldingen weergeven
+                  return ListTile(
+                    title: Text('Melding ${index + 1}'),
+                    subtitle:
+                        Text('Dit is de omschrijving van melding ${index + 1}'),
+                    // Voeg hier eventuele andere relevante informatie toe
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 20),
+            // Uitloggen knoppen
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Voer hier de actie uit voor uitloggen links
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                  ),
+                  child: Text(
+                    'Instelling',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    // Voer hier de actie uit voor uitloggen rechts
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                  ),
+                  child: Text(
+                    'Uitloggen',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
