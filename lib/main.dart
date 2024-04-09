@@ -46,8 +46,13 @@ class _MainPageState extends State<MainPage> {
       body: _widgetOptions.elementAt(_selectedIndex),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context,
-              '/melding'); // Navigeer naar de MeldingPage wanneer op de knop wordt geklikt
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true, // Hier instellen op true
+            builder: (BuildContext context) {
+              return MeldingPage();
+            },
+          );
         },
         child: Icon(Icons.notifications),
       ),
