@@ -54,35 +54,54 @@ class _MainPageState extends State<MainPage> {
             },
           );
         },
-        child: Icon(Icons.notifications),
+        child: Icon(Icons.add,
+            size: 36.0, color: Colors.white), // Maak het kruis groter en wit
+        backgroundColor: Colors.orange,
+        shape: CircleBorder(), // Maak de knop helemaal rond
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.chat),
-              onPressed: () {
-                // Controleer of de huidige pagina niet de ChatPage is voordat u navigeert
-                if (_selectedIndex != 0) {
-                  setState(() {
-                    _selectedIndex =
-                        0; // Stel de geselecteerde index in op de ChatPage
-                  });
-                }
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {
-                setState(() {
-                  _selectedIndex =
-                      2; // Stel de geselecteerde index in op de OverzichtPage
-                });
-              },
-            ),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: 20.0), // Voeg padding toe aan de iconen
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left:
+                        12.0), // Verplaats het linker icoon meer naar het midden
+                child: IconButton(
+                  icon: Icon(Icons.chat,
+                      size: 30.0), // Maak het linker icoon groter
+                  onPressed: () {
+                    // Controleer of de huidige pagina niet de ChatPage is voordat u navigeert
+                    if (_selectedIndex != 0) {
+                      setState(() {
+                        _selectedIndex =
+                            0; // Stel de geselecteerde index in op de ChatPage
+                      });
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    right:
+                        12.0),
+                child: IconButton(
+                  icon: Icon(Icons.list_alt,
+                      size: 30.0),
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex =
+                          2;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
