@@ -133,9 +133,9 @@ class ChatPage extends StatelessWidget {
                             bottomLeft: Radius.circular(15),
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(
-                                "https://via.placeholder.com/106x87"),
-                            fit: BoxFit.cover,
+                            image: AssetImage(
+                                'assets/images/inbraak.png'), // Gebruik AssetImage voor afbeeldingen uit de assets
+                            fit: BoxFit.cover, // Behoud hetzelfde fit-type
                           ),
                         ),
                       ),
