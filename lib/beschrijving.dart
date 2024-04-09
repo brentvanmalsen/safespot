@@ -9,7 +9,7 @@ class BeschrijvingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 32, top: 45, right: 32),
+            padding: const EdgeInsets.only(left: 32, top: 45, right: 32),
             child: Text(
               'Beschrijving',
               style: TextStyle(
@@ -19,9 +19,8 @@ class BeschrijvingPage extends StatelessWidget {
               ),
             ),
           ),
-          // Toegevoegd: Meer witruimte links en rechts voor de tekst onder 'Beschrijving'
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
               child: Text(
@@ -31,6 +30,41 @@ class BeschrijvingPage extends StatelessWidget {
                   fontFamily: 'Roboto',
                 ),
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 16),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Onderwerp',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFFF68B1E)),
+                    ),
+                    filled: true,
+                    fillColor: Color(0xFFF5F5F6),
+                  ),
+                ),
+                SizedBox(height: 16),
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  decoration: InputDecoration(
+                    labelText: 'Wat is er gebeurd?',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    // Aanpassen van de randkleur naar oranje
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFFF68B1E)),
+                    ),
+                    filled: true,
+                    fillColor: Color(0xFFF5F5F6),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
