@@ -38,6 +38,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/csslib-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
       "packageUri": "lib/",
@@ -104,6 +110,48 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "google_maps",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps-7.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "google_maps_flutter",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps_flutter-2.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "google_maps_flutter_android",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "google_maps_flutter_ios",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "google_maps_flutter_platform_interface",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps_flutter_platform_interface-2.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "google_maps_flutter_web",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/google_maps_flutter_web-0.5.6+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/html-0.15.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
@@ -162,6 +210,18 @@
       "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/js-0.6.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "js_wrapping",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/js_wrapping-0.7.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "leak_tracker",
@@ -224,6 +284,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "sanitize_html",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/brentvanmalsen/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -246,6 +312,12 @@
       "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/stream_channel-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "stream_transform",
+      "rootUri": "file:///Users/brentvanmalsen/.pub-cache/hosted/pub.dev/stream_transform-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "string_scanner",
@@ -296,7 +368,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-04-10T10:16:52.301801Z",
+  "generated": "2024-04-10T17:08:26.674847Z",
   "generator": "pub",
   "generatorVersion": "3.3.3"
 }
