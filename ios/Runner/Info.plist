@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Uw locatie wordt gebruikt om uw positie op de kaart weer te geven.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Uw locatie wordt gebruikt om uw positie op de kaart weer te geven.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Uw locatie wordt gebruikt om uw positie op de kaart weer te geven.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Our app needs permission to access photos</string>
 	<key>NSCameraUsageDescription</key>
