@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_dc27/notifi_service.dart';
 import 'chat.dart'; // Importeer de ChatPage widget
 import 'melding.dart'; // Importeer de MeldingPage widget
 import 'overzicht.dart'; // Importeer de OverzichtPage widget
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
   runApp(MyApp());
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_dc27/notifi_service.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class BeschrijvingPage extends StatefulWidget {
   @override
@@ -20,6 +20,13 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
         _selectedImage = File(returnedImage.path);
       });
     }
+  }
+
+  void _navigateBackToPreviousPage() {
+    // Navigeer terug naar de vorige pagina (chat.dart)
+    Navigator.pop(context);
+    // Navigeer terug naar de pagina daarvoor (bijvoorbeeld home.dart)
+    Navigator.pop(context);
   }
 
   @override
@@ -155,7 +162,10 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
         margin: EdgeInsets.only(right: 16),
         width: 130,
         child: ElevatedButton(
-          onPressed: () {},
+            onPressed: (){
+              NotificationService().showNotification(title: 'Test', body: 'Test');
+              _navigateBackToPreviousPage();
+            },
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFF68B1E),
             foregroundColor: Colors.white,
