@@ -20,7 +20,7 @@ class OverzichtPage extends StatelessWidget {
     NotificationData(
       title: 'Melding 1',
       description: 'Dit is de beschrijving van melding 1.',
-      location: 'Heeswijk-Dinther',
+      location: '1',
     ),
   ];
 
