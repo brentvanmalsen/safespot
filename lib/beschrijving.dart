@@ -195,5 +195,6 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
 
   void _navigateBackToPreviousPage() {
     Navigator.pop(context);
+    Navigator.pop(context);
   }
 }
