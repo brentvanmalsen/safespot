@@ -10,24 +10,8 @@ class BeschrijvingPage extends StatefulWidget {
 
 class _BeschrijvingPageState extends State<BeschrijvingPage> {
   File? _selectedImage;
-
-  Future<void> _pickImageFromGallery() async {
-    final returnedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    if (returnedImage != null) {
-      setState(() {
-        _selectedImage = File(returnedImage.path);
-      });
-    }
-  }
-
-  void _navigateBackToPreviousPage() {
-    // Navigeer terug naar de vorige pagina (chat.dart)
-    Navigator.pop(context);
-    // Navigeer terug naar de pagina daarvoor (bijvoorbeeld home.dart)
-    Navigator.pop(context);
-  }
+  TextEditingController _onderwerpController = TextEditingController();
+  TextEditingController _beschrijvingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +48,10 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
               ),
             ),
             SizedBox(height: 16),
-            const Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: TextField(
+                controller: _onderwerpController,
                 decoration: InputDecoration(
                   labelText: 'Onderwerp',
                   labelStyle: TextStyle(color: Colors.grey),
@@ -79,9 +64,10 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
               ),
             ),
             SizedBox(height: 16),
-            const Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: TextField(
+                controller: _beschrijvingController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
@@ -162,10 +148,9 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
         margin: EdgeInsets.only(right: 16),
         width: 130,
         child: ElevatedButton(
-            onPressed: (){
-              NotificationService().showNotification(title: 'Test', body: 'Test');
-              _navigateBackToPreviousPage();
-            },
+          onPressed: () {
+            _placeNotification();
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFF68B1E),
             foregroundColor: Colors.white,
@@ -180,5 +165,35 @@ class _BeschrijvingPageState extends State<BeschrijvingPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
+  }
+
+  Future<void> _pickImageFromGallery() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (returnedImage != null) {
+      setState(() {
+        _selectedImage = File(returnedImage.path);
+      });
+    }
+  }
+
+  void _placeNotification() {
+    String onderwerp = _onderwerpController.text;
+    String beschrijving = _beschrijvingController.text;
+
+    String volledigOnderwerp = 'SafeSpot - $onderwerp';
+
+    NotificationService().showNotification(
+      title: volledigOnderwerp,
+      body: beschrijving,
+    );
+
+    // Terugnavigeren naar vorige pagina
+    _navigateBackToPreviousPage();
+  }
+
+  void _navigateBackToPreviousPage() {
+    Navigator.pop(context);
   }
 }
