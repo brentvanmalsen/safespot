@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ChatPage extends StatelessWidget {
   @override
@@ -212,7 +215,24 @@ class ChatPage extends StatelessWidget {
   }
 }
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  XFile? _imageFile;
+
+  Future<void> _selectImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = pickedFile;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,18 +245,29 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Bovenin de afbeelding met aanpassen icoon
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.orange,
-                  // Hier kun je de gebruikersfoto toevoegen
-                  // backgroundImage: AssetImage('assets/images/user_image.png'),
-                ),
-                SizedBox(width: 20),
-                Icon(Icons.edit),
-              ],
+            GestureDetector(
+              onTap: _selectImage,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.orange,
+                    backgroundImage: _imageFile != null
+                        ? FileImage(File(_imageFile!.path))
+                        : null,
+                    child: _imageFile == null
+                        ? Icon(
+                            Icons.account_circle,
+                            size: 50,
+                            color: Colors.white,
+                          )
+                        : null,
+                  ),
+                  SizedBox(width: 20),
+                  Icon(Icons.edit),
+                ],
+              ),
             ),
             SizedBox(height: 15),
             // Naam van de gebruiker

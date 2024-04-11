@@ -19,7 +19,7 @@ class OverzichtPage extends StatelessWidget {
   final List<NotificationData> notifications = [
     NotificationData(
       title: 'Poging tot inbraak',
-      description: 'Dit is de beschrijving van melding 1.',
+      description: 'Zaterdagnacht waren er 2 jongens die voor mijn...',
       location: '1',
     ),
   ];
