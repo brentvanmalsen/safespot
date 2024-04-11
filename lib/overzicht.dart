@@ -18,7 +18,7 @@ class OverzichtPage extends StatelessWidget {
   // Definieer dummy meldingen
   final List<NotificationData> notifications = [
     NotificationData(
-      title: 'Melding 1',
+      title: 'Poging tot inbraak',
       description: 'Dit is de beschrijving van melding 1.',
       location: '1',
     ),
@@ -57,7 +57,7 @@ class OverzichtPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 30.0,
                         backgroundImage: AssetImage(
-                            'assets/person_image.png'), // Person's photo
+                            'assets/images/persoon1.png'), // Person's photo
                       ),
                       SizedBox(width: 10.0),
                       Expanded(
@@ -90,6 +90,14 @@ class OverzichtPage extends StatelessWidget {
                                   ),
                                 );
                               },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(Colors
+                                        .orange), // Oranje achtergrondkleur
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white), // Witte tekstkleur
+                              ),
                               child: Text('View Location'),
                             ),
                           ],
