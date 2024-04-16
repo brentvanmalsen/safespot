@@ -110,103 +110,112 @@ class ChatPage extends StatelessWidget {
           ),
           SizedBox(height: 2),
           Expanded(
-            child: ListView(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 87,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F6),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 106,
-                        height: 87,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            bottomLeft: Radius.circular(15),
-                          ),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/inbraak.png'),
-                            fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the new page when tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewPage()),
+                );
+              },
+              child: ListView(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 87,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF5F5F6),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 106,
+                          height: 87,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/inbraak.png'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      const Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Poging tot inbraak',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
+                        const Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Poging tot inbraak',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 5),
-                              SizedBox(height: 5),
-                              Text(
-                                'Eva de Boer: Zaterdagnacht om 04:00 waren er 2 mannen...',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 13,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
+                                SizedBox(height: 5),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Eva de Boer: Zaterdagnacht om 04:00 waren er 2 mannen...',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 25,
-                            height: 25,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF68B1E),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text(
-                                '1',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w900,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 25,
+                              height: 25,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFF68B1E),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '1',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 1),
-                          Text(
-                            '21-04-2024',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 10,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w500,
+                            SizedBox(height: 1),
+                            Text(
+                              '21-04-2024',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 10,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -337,6 +346,20 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NewPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Page'),
+      ),
+      body: Center(
+        child: Text('This is the new page'),
       ),
     );
   }
