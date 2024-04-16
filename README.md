@@ -25,13 +25,13 @@ De SafeSpot app is een Flutter applicatie waarmee gebruikers meldingenn kunnen m
 
 ## Bestandsstructuur
 
--- main.dart: Dit is het hoofdbestand van de app waarin het navigatiemenu is ingesteld.   
--- chat.dart: Deze pagina bevat de functionaliteit voor het bekijken van chatberichten en interactie met andere gebruikers.   
--- melding.dart: Hier worden de richtlijnen voor het aanmaken van een melding weergegeven.     
--- beschrijving.dart: Dit is de pagina waar gebruikers meldingen kunnen maken door informatie en eventueel beeldmateriaal toe te voegen.
--- notifi_service.dart: Dit is de class voor het verzenden van een pushmelding.  
--- overzicht.dart: Deze pagina is het overzicht van alle meldingen die zijn gemaakt binnen de app.  
--- kaart.dart: Hier wordt de kaartfunctionaliteit geïmplementeerd, waarmee gebruikers meldingen kunnen bekijken op de kaart.
+- `main.dart`: Dit is het hoofdbestand van de app waarin het navigatiemenu is ingesteld.   
+- `chat.dart`: Deze pagina bevat de functionaliteit voor het bekijken van chatberichten en interactie met andere gebruikers.   
+- `melding.dart`: Hier worden de richtlijnen voor het aanmaken van een melding weergegeven.     
+- `beschrijving.dart`: Dit is de pagina waar gebruikers meldingen kunnen maken door informatie en eventueel beeldmateriaal toe te voegen.
+- `notifi_service.dart`: Dit is de class voor het verzenden van een pushmelding.  
+- `overzicht.dart`: Deze pagina is het overzicht van alle meldingen die zijn gemaakt binnen de app.  
+- `kaart.dart`: Hier wordt de kaartfunctionaliteit geïmplementeerd, waarmee gebruikers meldingen kunnen bekijken op de kaart.
 
 ## Opmerkingen
 
