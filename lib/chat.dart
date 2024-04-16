@@ -110,18 +110,20 @@ class ChatPage extends StatelessWidget {
           ),
           SizedBox(height: 2),
           Expanded(
-            child: GestureDetector(
-              onTap: () {
-                // Navigate to the new page when tapped
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NewPage()),
-                );
-              },
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                children: [
-                  Container(
+            child: ListView(
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to the new page when tapped
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              NewPage()), // Navigeer naar de ChatPage
+                    );
+                  },
+                  child: Container(
                     width: double.infinity,
                     height: 87,
                     decoration: BoxDecoration(
@@ -160,7 +162,6 @@ class ChatPage extends StatelessWidget {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                SizedBox(height: 5),
                                 SizedBox(height: 5),
                                 Text(
                                   'Eva de Boer: Zaterdagnacht om 04:00 waren er 2 mannen...',
@@ -214,8 +215,8 @@ class ChatPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -498,38 +499,42 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ),
-        Divider(height: 1.0),
-        Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.attach_file),
-                    onPressed: _selectImage,
-                  ),
-                  Flexible(
-                    child: TextField(
-                      controller: _controller,
-                      onSubmitted: _handleSubmit,
-                      decoration: InputDecoration.collapsed(
-                        hintText: 'Type een bericht',
+        Divider(height: 10.0),
+        Padding(
+          padding: const EdgeInsets.only(
+              bottom: 28.0), // Voeg padding toe aan de onderkant
+          child: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).cardColor,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.attach_file),
+                      onPressed: _selectImage,
+                    ),
+                    Flexible(
+                      child: TextField(
+                        controller: _controller,
+                        onSubmitted: _handleSubmit,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Type een bericht',
+                        ),
                       ),
                     ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.send),
-                    onPressed: () => _handleSubmit(_controller.text),
-                  ),
-                ],
-              ),
-              _imageFile != null
-                  ? Image.file(_imageFile!)
-                  : SizedBox.shrink(), // Toon de geselecteerde afbeelding
-            ],
+                    IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () => _handleSubmit(_controller.text),
+                    ),
+                  ],
+                ),
+                _imageFile != null
+                    ? Image.file(_imageFile!)
+                    : SizedBox.shrink(), // Toon de geselecteerde afbeelding
+              ],
+            ),
           ),
         ),
       ],
