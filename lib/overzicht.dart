@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_dc27/chat.dart';
 import 'kaart.dart'; // Importeer de KaartPage
 
 // Definieer een class voor de dummy-gegevens van meldingen
@@ -80,25 +81,67 @@ class OverzichtPage extends StatelessWidget {
                             SizedBox(
                               height: 8.0,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => KaartPage(
-                                        location: notification.location),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => KaartPage(
+                                            location: notification.location),
+                                      ),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(Colors
+                                            .orange), // Oranje achtergrondkleur
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white), // Witte tekstkleur
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(
+                                      EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                          horizontal:
+                                              12.0), // Aanpassing van de padding
+                                    ),
                                   ),
-                                );
-                              },
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(Colors
-                                        .orange), // Oranje achtergrondkleur
-                                foregroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.white), // Witte tekstkleur
-                              ),
-                              child: Text('View Location'),
+                                  icon:
+                                      Icon(Icons.location_on), // Locatie icoon
+                                  label: Text('Locatie'),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            NewPage(), // Navigeer naar de Chatpagina
+                                      ),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(Colors
+                                            .orange), // Oranje achtergrondkleur
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white), // Witte tekstkleur
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(
+                                      EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                          horizontal:
+                                              12.0), // Aanpassing van de padding
+                                    ),
+                                  ),
+                                  icon: Icon(Icons.chat), // Chat icoon
+                                  label: Text('Chat'),
+                                ),
+                              ],
                             ),
                           ],
                         ),

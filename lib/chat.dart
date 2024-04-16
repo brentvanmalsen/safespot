@@ -304,7 +304,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 itemBuilder: (context, index) {
                   // Hier kun je de gegevens van de meldingen weergeven
                   return ListTile(
-                    title: Text('Melding ${index + 1}'),
+                    title: Text('Melding '),
                     subtitle:
                         Text('Dit is de omschrijving van melding ${index + 1}'),
                     // Voeg hier eventuele andere relevante informatie toe
@@ -359,7 +359,7 @@ class NewPage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('Group Name'), // Naam van de groep
+            Text('Poging tot inbraak'), // Naam van de groep
             CircleAvatar(
               // Afbeelding rechtsboven
               backgroundImage: AssetImage(
@@ -368,7 +368,81 @@ class NewPage extends StatelessWidget {
           ],
         ),
       ),
-      body: ChatScreen(),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // Actie voor deelnemen aan groep
+                  },
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white, // Kleur van het pictogram
+                    size: 18, // Grootte van het pictogram
+                  ),
+                  label: Text(
+                    'Groep deelnemen',
+                    style: TextStyle(color: Colors.white), // Kleur van de tekst
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.orange,
+                    ),
+                  ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // Actie voor de derde knop
+                  },
+                  icon: Icon(
+                    Icons.location_on,
+                    color: Colors.white, // Kleur van het pictogram
+                    size: 18, // Grootte van het pictogram
+                  ),
+                  label: Text(
+                    'Bekijk locatie',
+                    style: TextStyle(color: Colors.white), // Kleur van de tekst
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.orange,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 235.0),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                // Actie voor meldingen aan/uit zetten
+              },
+              icon: Icon(
+                Icons.notifications,
+                color: Colors.white, // Kleur van het pictogram
+                size: 24, // Grootte van het pictogram
+              ),
+              label: Text(
+                'Meldingen',
+                style: TextStyle(color: Colors.white), // Kleur van de tekst
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.orange,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ChatScreen(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -392,6 +466,8 @@ class _ChatScreenState extends State<ChatScreen> {
         ChatMessage(
           text: text,
           image: _imageFile,
+          profileImage:
+              'assets/images/persoon1.png', // Voeg hier de URL van de profielfoto toe
         ),
       );
       _imageFile =
@@ -440,7 +516,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       controller: _controller,
                       onSubmitted: _handleSubmit,
                       decoration: InputDecoration.collapsed(
-                        hintText: 'Type a message',
+                        hintText: 'Type een bericht',
                       ),
                     ),
                   ),
@@ -464,8 +540,11 @@ class _ChatScreenState extends State<ChatScreen> {
 class ChatMessage extends StatelessWidget {
   final String text;
   final File? image;
+  final String
+      profileImage; // Toegevoegd om de URL van de profielfoto op te nemen
 
-  const ChatMessage({required this.text, this.image});
+  const ChatMessage(
+      {required this.text, this.image, required this.profileImage});
 
   @override
   Widget build(BuildContext context) {
@@ -474,19 +553,20 @@ class ChatMessage extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              child: Text(
-                  'User'), // Vervang dit door de initialen of afbeelding van de gebruiker
-            ),
+          CircleAvatar(
+            backgroundImage:
+                AssetImage(profileImage), // Profielfoto van de gebruiker
           ),
+          const SizedBox(
+              width: 8.0), // Ruimte tussen de profielfoto en de tekst
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    'Jorg van de Rijdt'), // Vervang dit door de naam van de gebruiker
+                  'Jorg van de Rijdt', // Vervang dit door de naam van de gebruiker
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 if (text
                     .isNotEmpty) // Alleen tekst weergeven als het niet leeg is
                   Container(
