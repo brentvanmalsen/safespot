@@ -38,7 +38,7 @@ dependencies:
   google_maps_flutter: ^2.6.0
   flutter_local_notifications: ^13.0.0
   flutter_launcher_icons: ^0.13.1
-
+  file_picker: ^4.0.0
 dev_dependencies:
   flutter_lints: ^3.0.2
   flutter_test:

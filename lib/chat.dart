@@ -356,10 +356,152 @@ class NewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Page'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text('Group Name'), // Naam van de groep
+            CircleAvatar(
+              // Afbeelding rechtsboven
+              backgroundImage: AssetImage(
+                  'assets/images/inbraak.png'), // Vervang dit door de werkelijke afbeelding
+            ),
+          ],
+        ),
       ),
-      body: Center(
-        child: Text('This is the new page'),
+      body: ChatScreen(),
+    );
+  }
+}
+
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _controller = TextEditingController();
+  final List<ChatMessage> _messages = [];
+
+  File? _imageFile;
+
+  void _handleSubmit(String text) {
+    _controller.clear();
+    setState(() {
+      _messages.insert(
+        0,
+        ChatMessage(
+          text: text,
+          image: _imageFile,
+        ),
+      );
+      _imageFile =
+          null; // Reset de geselecteerde afbeelding na het verzenden van het bericht
+    });
+  }
+
+  Future<void> _selectImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            reverse: true,
+            itemCount: _messages.length,
+            itemBuilder: (BuildContext context, int index) {
+              return _messages[index];
+            },
+          ),
+        ),
+        Divider(height: 1.0),
+        Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.attach_file),
+                    onPressed: _selectImage,
+                  ),
+                  Flexible(
+                    child: TextField(
+                      controller: _controller,
+                      onSubmitted: _handleSubmit,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Type a message',
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () => _handleSubmit(_controller.text),
+                  ),
+                ],
+              ),
+              _imageFile != null
+                  ? Image.file(_imageFile!)
+                  : SizedBox.shrink(), // Toon de geselecteerde afbeelding
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ChatMessage extends StatelessWidget {
+  final String text;
+  final File? image;
+
+  const ChatMessage({required this.text, this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(
+              child: Text(
+                  'User'), // Vervang dit door de initialen of afbeelding van de gebruiker
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                    'Jorg van de Rijdt'), // Vervang dit door de naam van de gebruiker
+                if (text
+                    .isNotEmpty) // Alleen tekst weergeven als het niet leeg is
+                  Container(
+                    margin: const EdgeInsets.only(top: 5.0),
+                    child: Text(text),
+                  ),
+                if (image != null) // Afbeelding weergeven als het bestaat
+                  Container(
+                    margin: const EdgeInsets.only(top: 5.0),
+                    child: Image.file(image!),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
