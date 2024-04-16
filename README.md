@@ -48,7 +48,7 @@ De SafeSpot app is een Flutter applicatie waarmee gebruikers meldingenn kunnen m
 
 ## Gemaakt door
 
-README: Brent van Malsen. 
+README: Brent van Malsen.  
 SafeSpot app: Brent van Malsen & Jorg van de Rijdt
 
 
