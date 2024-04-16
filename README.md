@@ -11,17 +11,23 @@ De SafeSpot app is een Flutter applicatie waarmee gebruikers meldingenn kunnen m
    Open het project in een IDE, zoals VS Code, Xcode, of Android Studio.
 
 3. **Installeer dependencies:**
-   Zorg ervoor dat je de benodigde dependencies hebt geïntsalleerd door het volgende commando uit te voeren in de terminal: flutter pub get
+   Zorg ervoor dat je de benodigde dependencies hebt geïntsalleerd door het volgende commando uit te voeren in de terminal: `flutter pub get`
    
 4. **Run de app:**
    Nadat alle dependencies up-to-date zijn kun je de app runnen (uitvoeren) op een simulator of fysiek apparaat, zowel Android als IOS 
 
 ## Pubspec.yaml
 
--- flutter_local_notifications: Voor het weergeven van pushmeldingen.  
--- image_picker: Om afbeeldingen te kunnen selecteren uit de galerij.  
--- google_maps_flutter: Voor het gebruiken van de Google Maps functionaliteit.   
--- flutter_launcher_icons: Om aangepaste app iconen te gebruiken. 
+- flutter_local_notifications: Voor het weergeven van pushmeldingen.  
+- image_picker: Om afbeeldingen te kunnen selecteren uit de galerij.  
+- google_maps_flutter: Voor het gebruiken van de Google Maps functionaliteit.   
+- flutter_launcher_icons: Om aangepaste app iconen te gebruiken. 
+
+## Functionaliteiten
+
+- Beeldmateriaal toevoegen: Bij het maken van een melding kunnen gebruikers een foto uit de galerij uploaden die vervolgens in en preview in de app komt te staan.  
+- Pushmeldingen: Die ingevoerde tekst bij het aanmaken van een melding worden getoond in een pushmelding.  
+- Locatie bekijken: Op de overzichtpagina kan de opgegeven locatie bekeken worden.  
 
 ## Bestandsstructuur
 
@@ -33,13 +39,16 @@ De SafeSpot app is een Flutter applicatie waarmee gebruikers meldingenn kunnen m
 - `overzicht.dart`: Deze pagina is het overzicht van alle meldingen die zijn gemaakt binnen de app.  
 - `kaart.dart`: Hier wordt de kaartfunctionaliteit geïmplementeerd, waarmee gebruikers meldingen kunnen bekijken op de kaart.
 
-## Opmerkingen
+## Wat is nog niet compleet?
 
-lksjdhflksjhflksjhdf
+- Een accountfunctie voor verschillende profielen in de app.
+- De zoekfuncties
+- De 'instellingen' pagina
+- De 'locatie delen' sectie
 
-- kjdhflksjdf
+## Gemaakt door
 
-## Geschreven door
+README: Brent van Malsen.  
+SafeSpot app: Brent van Malsen & Jorg van de Rijdt
 
-Name: Brent van Malsen  
-GitLab: https://git.fhict.nl/I507960
+
