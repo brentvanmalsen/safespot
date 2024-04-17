@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location will be used to display on the map</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location will be used to display on the map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Uw locatie wordt gebruikt om uw positie op de kaart weer te geven.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Uw locatie wordt gebruikt om uw positie op de kaart weer te geven.</string>
