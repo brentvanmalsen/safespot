@@ -90,10 +90,12 @@ class OverzichtPage extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => KaartPage(
-                                            location: notification.location),
+                                            location: notification.location ??
+                                                ''), // Voeg null-controle toe
                                       ),
                                     );
                                   },
+
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(Colors

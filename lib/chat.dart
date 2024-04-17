@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'kaart.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -397,7 +397,13 @@ class NewPage extends StatelessWidget {
                 ),
                 ElevatedButton.icon(
                   onPressed: () {
-                    // Actie voor de derde knop
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => KaartPage(
+                            location: ''), // Voeg hier de locatiegegevens toe
+                      ),
+                    );
                   },
                   icon: Icon(
                     Icons.location_on,
