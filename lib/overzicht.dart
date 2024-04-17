@@ -89,9 +89,8 @@ class OverzichtPage extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => KaartPage(
-                                            location: notification.location ??
-                                                ''), // Voeg null-controle toe
+                                        builder: (context) =>
+                                            KaartPage(), // Voeg null-controle toe
                                       ),
                                     );
                                   },

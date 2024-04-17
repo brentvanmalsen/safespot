@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class KaartPage extends StatelessWidget {
-  final String location;
-
   // Constructor om de locatie te ontvangen
-  KaartPage({required this.location});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +12,7 @@ class KaartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location'),
+        title: Text('Locatie'),
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(

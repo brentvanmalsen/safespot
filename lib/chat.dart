@@ -400,9 +400,9 @@ class NewPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => KaartPage(
-                            location: ''), // Voeg hier de locatiegegevens toe
-                      ),
+                          builder: (context) =>
+                              KaartPage() // Voeg hier de locatiegegevens toe
+                          ),
                     );
                   },
                   icon: Icon(
