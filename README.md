@@ -5,7 +5,7 @@ De SafeSpot app is een Flutter applicatie waarmee gebruikers meldingenn kunnen m
 ## Installatie
 
 1. **Clone de repository naar je machine:**
-   git clone [https://git.fhict.nl/I507960/duo-case-27-community-safety.git]
+   git clone [https://github.com/brentvanmalsen/safespot.git]
 
 2. **Open het project:**
    Open het project in een IDE, zoals VS Code, Xcode, of Android Studio.
